@@ -1,13 +1,21 @@
-:root { --font-sans: "IBM Plex Sans Arabic", sans-serif; --font-latin: "DM Sans", sans-serif; --color-border: var(--border); --color-background: var(--background); --color-foreground: var(--foreground); }
+:root {
+  --font-sans: "IBM Plex Sans Arabic", sans-serif;
+  --font-latin: "DM Sans", sans-serif;
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
 :root {
   --radius: 0.25rem;
-  --ivory: oklch(0.985 0.01 85);
-  --sand: oklch(0.955 0.027 84);
+  --ivory: oklch(0.975 0.015 85);
+  /* زيادة درجة لون البيج لتكون أعمق وأوضح */
+  --sand: oklch(0.925 0.045 84);
   --ink-soft: oklch(0.42 0.022 70);
   --gold: oklch(0.65 0.105 78);
-  --hero-wash: oklch(0.982 0.012 85 / 96%);
-  --hero-wash-mid: oklch(0.982 0.012 85 / 64%);
-  --background: oklch(0.985 0.01 85);
+  --hero-wash: oklch(0.965 0.02 85 / 96%);
+  --hero-wash-mid: oklch(0.965 0.02 85 / 64%);
+  --background: oklch(0.975 0.015 85);
   --foreground: oklch(0.28 0.018 70);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -15,16 +23,16 @@
   --popover-foreground: oklch(0.129 0.042 264.695);
   --primary: oklch(0.32 0.022 67);
   --primary-foreground: oklch(0.985 0.01 85);
-  --secondary: oklch(0.968 0.007 247.896);
+  --secondary: oklch(0.948 0.012 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
+  --muted: oklch(0.948 0.012 247.896);
   --muted-foreground: oklch(0.52 0.019 72);
-  --accent: oklch(0.968 0.007 247.896);
+  --accent: oklch(0.948 0.012 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.87 0.025 83);
-  --input: oklch(0.87 0.025 83);
+  --border: oklch(0.82 0.035 83);
+  --input: oklch(0.82 0.035 83);
   --ring: oklch(0.65 0.105 78);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -35,10 +43,34 @@
   --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent: oklch(0.948 0.012 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-border: oklch(0.909 0.018 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+/* تنسيق وتضبيط أطر وأيقونات التراخيص وملفات البي دي اف والكاميرا لتبدو مرنة وغير مقصوصة */
+.license-card-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(217, 190, 122, 0.25), rgba(217, 190, 122, 0.08));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.license-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 body { background: var(--background); color: var(--foreground); font-family: "IBM Plex Sans Arabic", sans-serif; }
