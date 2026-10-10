@@ -1,1 +1,54 @@
-document.addEventListener('DOMContentLoaded',()=>{const m=document.querySelector('.menu-button'),n=document.querySelector('.mobile-nav');m?.addEventListener('click',()=>n.classList.toggle('open'));document.querySelectorAll('.mobile-nav a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));const filters=document.querySelectorAll('[data-filter]');filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('[data-type]').forEach(item=>item.hidden=b.dataset.filter!=='الكل'&&item.dataset.type!==b.dataset.filter)}));const dialog=document.querySelector('.lightbox');document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{dialog.querySelector('img').src=b.dataset.photo;dialog.querySelector('h2').textContent=b.dataset.title;dialog.querySelector('p').textContent=b.dataset.detail;dialog.hidden=false}));dialog?.addEventListener('click',e=>{if(e.target===dialog||e.target.closest('.lightbox-close'))dialog.hidden=true});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog)dialog.hidden=true});document.querySelector('#request-form')?.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.target);const text=`مرحبًا، أرغب في الاستفسار عن خدمة من موقع أميرة القحطاني.\nالاسم: ${d.get('name')}\nرقم التواصل: ${d.get('mobile')}\nالمجال: ${d.get('service')}\nالتفاصيل: ${d.get('details')}`;window.open('https://wa.me/966573866384?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');document.querySelector('.form-confirm').hidden=false})});
+document.addEventListener('DOMContentLoaded', () => {
+  // كود القائمة الجانبية للهاتف
+  const m = document.querySelector('.menu-button'),
+        n = document.querySelector('.mobile-nav');
+  
+  m?.addEventListener('click', () => n.classList.toggle('open'));
+  
+  document.querySelectorAll('.mobile-nav a').forEach(a => 
+    a.addEventListener('click', () => n.classList.remove('open'))
+  );
+
+  // كود الفلتر ومعرض الأعمال
+  const filters = document.querySelectorAll('[data-filter]');
+  filters.forEach(b => b.addEventListener('click', () => {
+    filters.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    
+    document.querySelectorAll('[data-type]').forEach(item => 
+      item.hidden = b.dataset.filter !== 'الكل' && item.dataset.type !== b.dataset.filter
+    );
+  }));
+
+  // كود الـ Lightbox للعرض المكبر للصورة
+  const dialog = document.querySelector('.lightbox');
+  
+  document.querySelectorAll('[data-photo]').forEach(b => b.addEventListener('click', () => {
+    dialog.querySelector('img').src = b.dataset.photo;
+    dialog.querySelector('h2').textContent = b.dataset.title;
+    dialog.querySelector('p').textContent = b.dataset.detail;
+    dialog.hidden = false;
+  }));
+
+  dialog?.addEventListener('click', e => {
+    if (e.target === dialog || e.target.closest('.lightbox-close')) {
+      dialog.hidden = true;
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && dialog) {
+      dialog.hidden = true;
+    }
+  });
+
+  // نموذج طلب الخدمة والتواصل عبر واتساب
+  document.querySelector('#request-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const d = new FormData(e.target);
+    const text = `مرحبًا، أرغب في الاستفسار عن خدمة من موقع أميرة القحطاني.\nالاسم: ${d.get('name')}\nرقم التواصل: ${d.get('mobile')}\nالمجال: ${d.get('service')}\nالتفاصيل: ${d.get('details')}`;
+    
+    window.open('https://wa.me/966573866384?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+    document.querySelector('.form-confirm').hidden = false;
+  });
+});
